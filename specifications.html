@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spécifications - Exocet MM40</title>
+    <script>
+        // Restore language immediately to avoid French flash
+        (function() {
+            const lang = localStorage.getItem('rocketlab_language') || 'fr';
+            document.documentElement.lang = lang;
+        })();
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="language-modal" class="language-modal" hidden>
+        <div class="language-modal-content">
+            <h2>Choisir la langue</h2>
+            <p class="modal-subtitle">Select language • Wählen Sie Sprache • Selecciona idioma</p>
+            <div class="language-buttons">
+                <button class="lang-btn" data-lang="fr" aria-label="Français">
+                    <span class="flag">🇫🇷</span>
+                    <span class="lang-name">Français</span>
+                </button>
+                <button class="lang-btn" data-lang="en" aria-label="English">
+                    <span class="flag">🇬🇧</span>
+                    <span class="lang-name">English</span>
+                </button>
+                <button class="lang-btn" data-lang="de" aria-label="Deutsch">
+                    <span class="flag">🇩🇪</span>
+                    <span class="lang-name">Deutsch</span>
+                </button>                <button class="lang-btn" data-lang="lb" aria-label="Lëtzebuergesch">
+                    <span class="flag">🇿🇺</span>
+                    <span class="lang-name">Lëtzebuergesch</span>
+                </button>                <button class="lang-btn" data-lang="es" aria-label="Español">
+                    <span class="flag">🇪🇸</span>
+                    <span class="lang-name">Español</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="layout">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow" data-i18n="rocketlab">UE RocketLab</p>
+                <h1 data-i18n="purpleTeam">Purple Team</h1>
+            </div>
+            <nav aria-label="Navigation principale">
+                <a href="index.html" data-i18n="home">Accueil</a>
+                <a href="analysis.html" data-i18n="analysis">Analyse</a>
+                <a href="specifications.html" data-i18n="specifications">Spécifications</a>
+                <select id="language-selector" class="lang-selector" aria-label="Langue / Language / Sprache / Idioma / Lëtzebuergesch">
+                    <option value="fr">FR</option>
+                    <option value="en">EN</option>
+                    <option value="de">DE</option>
+                    <option value="lb">LB</option>
+                    <option value="es">ES</option>
+                </select>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h2 data-i18n="specTitle">Caractéristiques Techniques Exocet MM40</h2>
+                    <p class="hero-subtitle" data-i18n="specSubtitle">Spécifications complètes de notre fusée model réduit</p>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 data-i18n="physicalSpecs">Caractéristiques Physiques</h2>
+                
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <h3 data-i18n="specLength">Longueur</h3>
+                        <p class="spec-value">71.75 cm</p>
+                        <p class="spec-detail">(28.25")</p>
+                    </div>
+                    
+                    <div class="spec-card">
+                        <h3 data-i18n="specDiameter">Diamètre</h3>
+                        <p class="spec-value">42 mm</p>
+                        <p class="spec-detail">(1.64")</p>
+                    </div>
+                    
+                    <div class="spec-card">
+                        <h3 data-i18n="specWeight">Poids (sans moteur)</h3>
+                        <p class="spec-value">150 g</p>
+                        <p class="spec-detail" data-i18n="approximate">Approximatif</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 data-i18n="motorSpecs">Moteurs et Performances</h2>
+                <p class="spec-note" data-i18n="stockNote"><strong>Note :</strong> Les spécifications ci-dessous sont les caractéristiques du kit d'origine Exocet MM40.</p>
+                
+                <div class="motor-selected">
+                    <h3 data-i18n="selectedMotor">Moteur Sélectionné</h3>
+                    <div class="motor-card-featured">
+                        <p class="motor-type">TSP D12-6</p>
+                        <p class="motor-apogee">~630 ft (192 m)</p>
+                    </div>
+                </div>
+
+                <h3 data-i18n="allMotors">Tous les Moteurs Compatibles</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-i18n="motorType">Type de Moteur</th>
+                                <th data-i18n="apogee">Apogée (ft)</th>
+                                <th data-i18n="apogeeMeters">Apogée (m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="motor-highlighted">
+                                <td><strong>TSP D12-6</strong></td>
+                                <td><strong>630</strong></td>
+                                <td><strong>192</strong></td>
+                            </tr>
+                            <tr>
+                                <td>D12-5</td>
+                                <td>630</td>
+                                <td>192</td>
+                            </tr>
+                            <tr>
+                                <td>E12-6</td>
+                                <td>1000</td>
+                                <td>305</td>
+                            </tr>
+                            <tr>
+                                <td>E20-7</td>
+                                <td>1250</td>
+                                <td>381</td>
+                            </tr>
+                            <tr>
+                                <td>E30-7</td>
+                                <td>1200</td>
+                                <td>366</td>
+                            </tr>
+                            <tr>
+                                <td>24E22-6</td>
+                                <td>890</td>
+                                <td>271</td>
+                            </tr>
+                            <tr>
+                                <td>26E31-6</td>
+                                <td>950</td>
+                                <td>290</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 data-i18n="kitComponents">Contenu du Kit</h2>
+                
+                <div class="components-list">
+                    <ul>
+                        <li data-i18n="comp1">Pièces laser-découpées en contreplaqué</li>
+                        <li data-i18n="comp2">Ailettes pré-découpées</li>
+                        <li data-i18n="comp3">Cône de nez imprimé en 3D</li>
+                        <li data-i18n="comp4">Parachute en plastique 18"</li>
+                        <li data-i18n="comp5">Système d'éjection sans wadding</li>
+                        <li data-i18n="comp6">Décals détaillés pour finitions</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 data-i18n="requirements">Requis pour l'Assemblage et le Lancement</h2>
+                
+                <div class="requirements-grid">
+                    <div class="req-card">
+                        <h3 data-i18n="reqAssembly">Matériaux d'Assemblage</h3>
+                        <ul>
+                            <li data-i18n="reqWood">Colle bois</li>
+                            <li data-i18n="reqKnife">Couteau de hobby</li>
+                            <li data-i18n="reqSand">Papier de verre</li>
+                            <li data-i18n="reqTape">Ruban de masquage</li>
+                            <li data-i18n="reqPaint">Apprêt et peinture</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="req-card">
+                        <h3 data-i18n="reqLaunch">Équipement de Lancement</h3>
+                        <ul>
+                            <li data-i18n="reqMotors">Moteurs (D ou E)</li>
+                            <li data-i18n="reqLaunchSystem">Système de lancement</li>
+                            <li data-i18n="reqRod">Tige de lancement 3/16"</li>
+                            <li data-i18n="reqController">Contrôleur de lancement</li>
+                            <li data-i18n="reqIgniters">Allumeurs</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 data-i18n="buildInfo">Informations de Construction</h2>
+                <p data-i18n="skillLevel">Niveau de difficulté : <strong>Intermédiaire</strong></p>
+                <p data-i18n="buildDescription">Ce modèle réduit de la fusée Exocet MM40 française offre une expérience de construction et de vol réaliste. Idéal pour les amateurs de fusées ayant des compétences intermédiaires en assemblage, il contient de nombreuses petites pièces et des décalcomanies.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p data-i18n="copyright">© 2026 UE RocketLab - Purple Team</p>
+        </footer>
+    </div>
+
+    <script src="i18n.js"></script>
+</body>
+</html>

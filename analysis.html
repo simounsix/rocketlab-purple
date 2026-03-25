@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analyse - Rocket Flight Analysis</title>
-
+    <script>
+        // Restore language immediately to avoid French flash
+        (function() {
+            const lang = localStorage.getItem('rocketlab_language') || 'fr';
+            document.documentElement.lang = lang;
+        })();
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,8 +31,10 @@
                 <button class="lang-btn" data-lang="de" aria-label="Deutsch">
                     <span class="flag">🇩🇪</span>
                     <span class="lang-name">Deutsch</span>
-                </button>
-                <button class="lang-btn" data-lang="es" aria-label="Español">
+                </button>                <button class="lang-btn" data-lang="lb" aria-label="Lëtzebuergesch">
+                    <span class="flag">🇿🇺</span>
+                    <span class="lang-name">Lëtzebuergesch</span>
+                </button>                <button class="lang-btn" data-lang="es" aria-label="Español">
                     <span class="flag">🇪🇸</span>
                     <span class="lang-name">Español</span>
                 </button>
@@ -43,10 +51,12 @@
             <nav aria-label="Navigation principale">
                 <a href="index.html" data-i18n="home">Accueil</a>
                 <a href="analysis.html" data-i18n="analysis">Analyse</a>
-                <select id="language-selector" class="lang-selector" aria-label="Langue / Language / Sprache / Idioma">
+                <a href="specifications.html" data-i18n="specifications">Spécifications</a>
+                <select id="language-selector" class="lang-selector" aria-label="Langue / Language / Sprache / Idioma / Lëtzebuergesch">
                     <option value="fr">FR</option>
                     <option value="en">EN</option>
                     <option value="de">DE</option>
+                    <option value="lb">LB</option>
                     <option value="es">ES</option>
                 </select>
             </nav>
@@ -54,45 +64,40 @@
 
         <main>
             <section id="dashboard" class="panel">
-                <h2 data-i18n="overview">Vue d ensemble</h2>
-                <p class="panel-subtitle" data-i18n="overviewSubtitle">Indicateurs resumes issus de la base de donnees.</p>
+                <h2 data-i18n="flightOverview">Aperçu du Vol</h2>
+                <p class="panel-subtitle" data-i18n="flightInfo">Données du vol Exocet MM40 du 27/03/2026</p>
 
                 <div class="kpi-grid">
                     <article class="kpi-card">
-                        <p class="kpi-label" data-i18n="flightsAnalyzed">Vols analyses</p>
-                        <p class="kpi-value">1 248</p>
+                        <p class="kpi-label" data-i18n="maxAltitude">Altitude maximale</p>
+                        <p class="kpi-value">548 km</p>
                     </article>
                     <article class="kpi-card">
-                        <p class="kpi-label" data-i18n="missionSuccess">Reussite mission</p>
-                        <p class="kpi-value">94.2%</p>
+                        <p class="kpi-label" data-i18n="flightDuration">Durée du vol</p>
+                        <p class="kpi-value">142 s</p>
                     </article>
                     <article class="kpi-card">
-                        <p class="kpi-label" data-i18n="openIncidents">Incidents ouverts</p>
-                        <p class="kpi-value">7</p>
+                        <p class="kpi-label" data-i18n="maxSpeed">Vitesse maximale</p>
+                        <p class="kpi-value">285 m/s</p>
                     </article>
                     <article class="kpi-card">
-                        <p class="kpi-label" data-i18n="lastSync">Derniere sync BDD</p>
-                        <p class="kpi-value">25/03/2026 14:32</p>
+                        <p class="kpi-label" data-i18n="flightStatus">État du vol</p>
+                        <p class="kpi-value"><span class="badge ok">Nominal</span></p>
                     </article>
                 </div>
             </section>
 
-            <section id="donnees" class="panel">
+            <section id="telemetry" class="panel">
                 <div class="panel-header">
-                    <h2 data-i18n="flightData">Donnees de vol</h2>
+                    <h2 data-i18n="telemetryData">Données de Télémétrie</h2>
                     <div class="filters" role="group" aria-label="Filtres des donnees">
                         <label>
-                            <span data-i18n="status">Statut</span>
-                            <select>
-                                <option data-i18n="all">Tous</option>
-                                <option data-i18n="nominal">Nominal</option>
-                                <option data-i18n="warning">Attention</option>
-                                <option data-i18n="critical">Critique</option>
+                            <span data-i18n="timeRange">Plage horaire</span>
+                            <select id="timeRangeSelect">
+                                <option value="full" data-i18n="timeRangeFull">Complète (0-142s)</option>
+                                <option value="ascent" data-i18n="timeRangeAscent">Montée (0-75s)</option>
+                                <option value="descent" data-i18n="timeRangeDescent">Descente (75-142s)</option>
                             </select>
-                        </label>
-                        <label>
-                            <span data-i18n="search">Recherche</span>
-                            <input type="search" placeholder="ID mission ou lanceur" data-i18n-placeholder="searchPlaceholder">
                         </label>
                     </div>
                 </div>
@@ -101,44 +106,105 @@
                     <table>
                         <thead>
                             <tr>
-                                <th data-i18n="missionId">ID Mission</th>
-                                <th data-i18n="launcher">Lanceur</th>
-                                <th data-i18n="date">Date</th>
-                                <th data-i18n="maxAltitude">Altitude max</th>
-                                <th data-i18n="status">Statut</th>
+                                <th data-i18n="timestamp">Timestamp (s)</th>
+                                <th data-i18n="telAltitude">Altitude (m)</th>
+                                <th data-i18n="telPressure">Pression (hPa)</th>
+                                <th data-i18n="telHumidity">Humidité (%)</th>
+                                <th data-i18n="telLatitude">Latitude</th>
+                                <th data-i18n="telLongitude">Longitude</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>RX-4021</td>
-                                <td>Falcon 9</td>
-                                <td>21/03/2026</td>
-                                <td>548 km</td>
-                                <td><span class="badge ok">Nominal</span></td>
+                                <td>0.0</td>
+                                <td>245</td>
+                                <td>1013.25</td>
+                                <td>65.2</td>
+                                <td>49.1892°N</td>
+                                <td>2.2424°E</td>
                             </tr>
                             <tr>
-                                <td>RX-4016</td>
-                                <td>Ariane 6</td>
-                                <td>17/03/2026</td>
-                                <td>622 km</td>
-                                <td><span class="badge warn">Attention</span></td>
+                                <td>5.2</td>
+                                <td>1248</td>
+                                <td>938.50</td>
+                                <td>58.4</td>
+                                <td>49.1901°N</td>
+                                <td>2.2432°E</td>
                             </tr>
                             <tr>
-                                <td>RX-4009</td>
-                                <td>Atlas V</td>
-                                <td>14/03/2026</td>
-                                <td>501 km</td>
-                                <td><span class="badge ok">Nominal</span></td>
+                                <td>10.8</td>
+                                <td>2891</td>
+                                <td>802.15</td>
+                                <td>51.3</td>
+                                <td>49.1915°N</td>
+                                <td>2.2448°E</td>
                             </tr>
                             <tr>
-                                <td>RX-3998</td>
-                                <td>Starship</td>
-                                <td>10/03/2026</td>
-                                <td>271 km</td>
-                                <td><span class="badge critical">Critique</span></td>
+                                <td>20.5</td>
+                                <td>8234</td>
+                                <td>432.80</td>
+                                <td>28.6</td>
+                                <td>49.1953°N</td>
+                                <td>2.2502°E</td>
+                            </tr>
+                            <tr>
+                                <td>32.1</td>
+                                <td>15847</td>
+                                <td>186.40</td>
+                                <td>12.1</td>
+                                <td>49.2011°N</td>
+                                <td>2.2598°E</td>
+                            </tr>
+                            <tr>
+                                <td>48.9</td>
+                                <td>24156</td>
+                                <td>31.25</td>
+                                <td>2.8</td>
+                                <td>49.2089°N</td>
+                                <td>2.2745°E</td>
+                            </tr>
+                            <tr>
+                                <td>75.0</td>
+                                <td>30285</td>
+                                <td>1.54</td>
+                                <td>0.1</td>
+                                <td>49.2201°N</td>
+                                <td>2.3012°E</td>
+                            </tr>
+                            <tr>
+                                <td>95.3</td>
+                                <td>18764</td>
+                                <td>24.80</td>
+                                <td>1.9</td>
+                                <td>49.2112°N</td>
+                                <td>2.2854°E</td>
+                            </tr>
+                            <tr>
+                                <td>120.6</td>
+                                <td>4521</td>
+                                <td>562.35</td>
+                                <td>35.4</td>
+                                <td>49.2001°N</td>
+                                <td>2.2651°E</td>
+                            </tr>
+                            <tr>
+                                <td>142.0</td>
+                                <td>245</td>
+                                <td>1011.80</td>
+                                <td>64.8</td>
+                                <td>49.1892°N</td>
+                                <td>2.2425°E</td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </section>
+
+            <section id="charts-section" class="panel">
+                <h2 data-i18n="charts">Graphiques</h2>
+                <p class="panel-subtitle" data-i18n="chartsComingSoon">Visualisations des données de vol (Chart.js - À venir)</p>
+                <div style="margin-top: 20px; padding: 40px; text-align: center; background: var(--surface-muted); border-radius: var(--radius); color: var(--text-muted);">
+                    <p data-i18n="chartsPreparation">Graphiques interactifs en préparation...</p>
                 </div>
             </section>
 
@@ -146,7 +212,7 @@
                 <h2 data-i18n="systemStatus">Etat du systeme</h2>
                 <p class="panel-subtitle" data-i18n="systemStatusSubtitle">Interface prete a consommer des donnees dynamiques depuis une API connectee a la BDD.</p>
                 <div style="margin-top: 12px; padding: 10px; border-radius: 8px; background: #f0eef9; color: #66607f; font-size: 0.9rem;">
-                    <span data-i18n="systemStatusMessage">Tous les systemes sont operationnels. Derniere synchronisation: 25/03/2026 14:32 UTC.</span>
+                    <span data-i18n="systemStatusMessage">Tous les systemes sont operationnels. Derniere synchronisation: 27/03/2026 14:32 UTC.</span>
                 </div>
             </section>
         </main>

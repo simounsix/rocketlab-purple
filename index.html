@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rocket Flight Analysis</title>
-
+    <script>
+        // Restore language immediately to avoid French flash
+        (function() {
+            const lang = localStorage.getItem('rocketlab_language') || 'fr';
+            document.documentElement.lang = lang;
+        })();
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,8 +31,10 @@
                 <button class="lang-btn" data-lang="de" aria-label="Deutsch">
                     <span class="flag">🇩🇪</span>
                     <span class="lang-name">Deutsch</span>
-                </button>
-                <button class="lang-btn" data-lang="es" aria-label="Español">
+                </button>                <button class="lang-btn" data-lang="lb" aria-label="Lëtzebuergesch">
+                    <span class="flag">🇿🇺</span>
+                    <span class="lang-name">Lëtzebuergesch</span>
+                </button>                <button class="lang-btn" data-lang="es" aria-label="Español">
                     <span class="flag">🇪🇸</span>
                     <span class="lang-name">Español</span>
                 </button>
@@ -43,10 +51,12 @@
             <nav aria-label="Navigation principale">
                 <a href="index.html" data-i18n="home">Accueil</a>
                 <a href="analysis.html" data-i18n="analysis">Analyse</a>
-                <select id="language-selector" class="lang-selector" aria-label="Langue / Language / Sprache / Idioma">
+                <a href="specifications.html" data-i18n="specifications">Spécifications</a>
+                <select id="language-selector" class="lang-selector" aria-label="Langue / Language / Sprache / Idioma / Lëtzebuergesch">
                     <option value="fr">FR</option>
                     <option value="en">EN</option>
                     <option value="de">DE</option>
+                    <option value="lb">LB</option>
                     <option value="es">ES</option>
                 </select>
             </nav>
@@ -81,7 +91,7 @@ Au-delà de l’aspect purement technique, ce projet vise également à renforce
                                 <th data-i18n="firstName">Prenom</th>
                                 <th data-i18n="lastName">Nom</th>
                                 <th data-i18n="origin">Origine</th>
-                                <th data-i18n="role">Rôle</th>
+                                <th data-i18n="role">Attribution Principale</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,37 +99,37 @@ Au-delà de l’aspect purement technique, ce projet vise également à renforce
                                 <td>Sergio</td>
                                 <td>Mirado</td>
                                 <td>Esp</td>
-                                <td data-i18n="roleBuilder">Les constructeurs</td>
+                                <td data-i18n="categoryRocket">Côté rocket</td>
                             </tr>
                             <tr>
                                 <td>Levani</td>
                                 <td>Tchikaidze</td>
                                 <td>Lu</td>
-                                <td data-i18n="roleArduino">Master of Arduino</td>
+                                <td data-i18n="categoryElectronics">Côté électronique</td>
                             </tr>
                             <tr>
                                 <td>Simon</td>
                                 <td>Waddell</td>
                                 <td>Fr</td>
-                                <td data-i18n="roleCoder">Le codeur</td>
+                                <td data-i18n="categoryElectronics">Côté électronique</td>
                             </tr>
                             <tr>
                                 <td>Astou</td>
                                 <td>Mbow</td>
                                 <td>Fr</td>
-                                <td data-i18n="roleDecorator">Les décoratrices</td>
+                                <td data-i18n="categoryRocket">Côté rocket</td>
                             </tr>
                             <tr>
                                 <td>Ami-Tine</td>
                                 <td>Ndiaye</td>
                                 <td>Fr</td>
-                                <td data-i18n="roleDecorator">Les décoratrices</td>
+                                <td data-i18n="categoryRocket">Côté rocket</td>
                             </tr>
                             <tr>
                                 <td>Ilyas</td>
                                 <td>El Aamery</td>
                                 <td>Fr</td>
-                                <td data-i18n="roleBuilder">Les constructeurs</td>
+                                <td data-i18n="categoryRocket">Côté rocket</td>
                             </tr>
                         </tbody>
                     </table>
