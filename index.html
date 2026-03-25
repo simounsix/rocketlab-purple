@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Flight Analysis</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="language-modal" class="language-modal" hidden>
+        <div class="language-modal-content">
+            <h2>Choisir la langue</h2>
+            <p class="modal-subtitle">Select language • Wählen Sie Sprache • Selecciona idioma</p>
+            <div class="language-buttons">
+                <button class="lang-btn" data-lang="fr" aria-label="Français">
+                    <span class="flag">🇫🇷</span>
+                    <span class="lang-name">Français</span>
+                </button>
+                <button class="lang-btn" data-lang="en" aria-label="English">
+                    <span class="flag">🇬🇧</span>
+                    <span class="lang-name">English</span>
+                </button>
+                <button class="lang-btn" data-lang="de" aria-label="Deutsch">
+                    <span class="flag">🇩🇪</span>
+                    <span class="lang-name">Deutsch</span>
+                </button>
+                <button class="lang-btn" data-lang="es" aria-label="Español">
+                    <span class="flag">🇪🇸</span>
+                    <span class="lang-name">Español</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="layout">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow" data-i18n="rocketlab">UE RocketLab</p>
+                <h1 data-i18n="purpleTeam">Purple Team</h1>
+            </div>
+            <nav aria-label="Navigation principale">
+                <a href="index.html" data-i18n="home">Accueil</a>
+                <a href="analysis.html" data-i18n="analysis">Analyse</a>
+                <select id="language-selector" class="lang-selector" aria-label="Langue / Language / Sprache / Idioma">
+                    <option value="fr">FR</option>
+                    <option value="en">EN</option>
+                    <option value="de">DE</option>
+                    <option value="es">ES</option>
+                </select>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h2 data-i18n="heroTitle">Suivi du vol de la fusée Exocet MM40</h2>
+                    <p class="hero-subtitle" data-i18n="heroSubtitle">Suivi des données obtenues lors du vol de notre fusée</p>
+                    <a href="analysis.html" class="cta-button" data-i18n="ctaButton">Accéder aux données</a>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 data-i18n="aboutProject">A propos du Projet</h2>
+                <p data-i18n="aboutText">Le projet UE RocketLab est une initiative d'échange réunissant des étudiants issus de plusieurs pays européens, notamment l'Espagne, la France et le Luxembourg. Son objectif principal est de développer une collaboration interuniversitaire à travers la conception et le montage d'une fusée capable d'effectuer des relevés de données en temps réel durant son vol.
+
+Au-delà de l’aspect purement technique, ce projet vise également à renforcer la communication, la coopération internationale et le travail en équipe dans un contexte multiculturel.</p>
+            </section>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <h2 data-i18n="teamPurple">Equipe Purple</h2>
+                    <span class="team-chip" data-i18n="teamMembers">6 membres</span>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-i18n="firstName">Prenom</th>
+                                <th data-i18n="lastName">Nom</th>
+                                <th data-i18n="origin">Origine</th>
+                                <th data-i18n="role">Rôle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sergio</td>
+                                <td>Mirado</td>
+                                <td>Esp</td>
+                                <td data-i18n="roleBuilder">Les constructeurs</td>
+                            </tr>
+                            <tr>
+                                <td>Levani</td>
+                                <td>Tchikaidze</td>
+                                <td>Lu</td>
+                                <td data-i18n="roleArduino">Master of Arduino</td>
+                            </tr>
+                            <tr>
+                                <td>Simon</td>
+                                <td>Waddell</td>
+                                <td>Fr</td>
+                                <td data-i18n="roleCoder">Le codeur</td>
+                            </tr>
+                            <tr>
+                                <td>Astou</td>
+                                <td>Mbow</td>
+                                <td>Fr</td>
+                                <td data-i18n="roleDecorator">Les décoratrices</td>
+                            </tr>
+                            <tr>
+                                <td>Ami-Tine</td>
+                                <td>Ndiaye</td>
+                                <td>Fr</td>
+                                <td data-i18n="roleDecorator">Les décoratrices</td>
+                            </tr>
+                            <tr>
+                                <td>Ilyas</td>
+                                <td>El Aamery</td>
+                                <td>Fr</td>
+                                <td data-i18n="roleBuilder">Les constructeurs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p data-i18n="copyright">© 2026 UE RocketLab - Purple Team</p>
+        </footer>
+    </div>
+
+    <script src="i18n.js"></script>
+</body>
+</html>

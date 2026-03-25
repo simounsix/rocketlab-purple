@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse - Rocket Flight Analysis</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="language-modal" class="language-modal" hidden>
+        <div class="language-modal-content">
+            <h2>Choisir la langue</h2>
+            <p class="modal-subtitle">Select language • Wählen Sie Sprache • Selecciona idioma</p>
+            <div class="language-buttons">
+                <button class="lang-btn" data-lang="fr" aria-label="Français">
+                    <span class="flag">🇫🇷</span>
+                    <span class="lang-name">Français</span>
+                </button>
+                <button class="lang-btn" data-lang="en" aria-label="English">
+                    <span class="flag">🇬🇧</span>
+                    <span class="lang-name">English</span>
+                </button>
+                <button class="lang-btn" data-lang="de" aria-label="Deutsch">
+                    <span class="flag">🇩🇪</span>
+                    <span class="lang-name">Deutsch</span>
+                </button>
+                <button class="lang-btn" data-lang="es" aria-label="Español">
+                    <span class="flag">🇪🇸</span>
+                    <span class="lang-name">Español</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="layout">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow" data-i18n="rocketlab">Rocket Flight Analysis</p>
+                <h1 data-i18n="purpleTeam">Purple Team</h1>
+            </div>
+            <nav aria-label="Navigation principale">
+                <a href="index.html" data-i18n="home">Accueil</a>
+                <a href="analysis.html" data-i18n="analysis">Analyse</a>
+                <select id="language-selector" class="lang-selector" aria-label="Langue / Language / Sprache / Idioma">
+                    <option value="fr">FR</option>
+                    <option value="en">EN</option>
+                    <option value="de">DE</option>
+                    <option value="es">ES</option>
+                </select>
+            </nav>
+        </header>
+
+        <main>
+            <section id="dashboard" class="panel">
+                <h2 data-i18n="overview">Vue d ensemble</h2>
+                <p class="panel-subtitle" data-i18n="overviewSubtitle">Indicateurs resumes issus de la base de donnees.</p>
+
+                <div class="kpi-grid">
+                    <article class="kpi-card">
+                        <p class="kpi-label" data-i18n="flightsAnalyzed">Vols analyses</p>
+                        <p class="kpi-value">1 248</p>
+                    </article>
+                    <article class="kpi-card">
+                        <p class="kpi-label" data-i18n="missionSuccess">Reussite mission</p>
+                        <p class="kpi-value">94.2%</p>
+                    </article>
+                    <article class="kpi-card">
+                        <p class="kpi-label" data-i18n="openIncidents">Incidents ouverts</p>
+                        <p class="kpi-value">7</p>
+                    </article>
+                    <article class="kpi-card">
+                        <p class="kpi-label" data-i18n="lastSync">Derniere sync BDD</p>
+                        <p class="kpi-value">25/03/2026 14:32</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="donnees" class="panel">
+                <div class="panel-header">
+                    <h2 data-i18n="flightData">Donnees de vol</h2>
+                    <div class="filters" role="group" aria-label="Filtres des donnees">
+                        <label>
+                            <span data-i18n="status">Statut</span>
+                            <select>
+                                <option data-i18n="all">Tous</option>
+                                <option data-i18n="nominal">Nominal</option>
+                                <option data-i18n="warning">Attention</option>
+                                <option data-i18n="critical">Critique</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span data-i18n="search">Recherche</span>
+                            <input type="search" placeholder="ID mission ou lanceur" data-i18n-placeholder="searchPlaceholder">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-i18n="missionId">ID Mission</th>
+                                <th data-i18n="launcher">Lanceur</th>
+                                <th data-i18n="date">Date</th>
+                                <th data-i18n="maxAltitude">Altitude max</th>
+                                <th data-i18n="status">Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RX-4021</td>
+                                <td>Falcon 9</td>
+                                <td>21/03/2026</td>
+                                <td>548 km</td>
+                                <td><span class="badge ok">Nominal</span></td>
+                            </tr>
+                            <tr>
+                                <td>RX-4016</td>
+                                <td>Ariane 6</td>
+                                <td>17/03/2026</td>
+                                <td>622 km</td>
+                                <td><span class="badge warn">Attention</span></td>
+                            </tr>
+                            <tr>
+                                <td>RX-4009</td>
+                                <td>Atlas V</td>
+                                <td>14/03/2026</td>
+                                <td>501 km</td>
+                                <td><span class="badge ok">Nominal</span></td>
+                            </tr>
+                            <tr>
+                                <td>RX-3998</td>
+                                <td>Starship</td>
+                                <td>10/03/2026</td>
+                                <td>271 km</td>
+                                <td><span class="badge critical">Critique</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="etat" class="panel">
+                <h2 data-i18n="systemStatus">Etat du systeme</h2>
+                <p class="panel-subtitle" data-i18n="systemStatusSubtitle">Interface prete a consommer des donnees dynamiques depuis une API connectee a la BDD.</p>
+                <div style="margin-top: 12px; padding: 10px; border-radius: 8px; background: #f0eef9; color: #66607f; font-size: 0.9rem;">
+                    <span data-i18n="systemStatusMessage">Tous les systemes sont operationnels. Derniere synchronisation: 25/03/2026 14:32 UTC.</span>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p data-i18n="copyright">© 2026 UE RocketLab - Purple Team</p>
+        </footer>
+    </div>
+
+    <script src="i18n.js"></script>
+</body>
+</html>
