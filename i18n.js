@@ -91,7 +91,7 @@
 			"selectedMotor": "Moteur Sélectionné",
 			"allMotors": "Tous les Moteurs Compatibles",
 			"telemetryData": "Données de Télémétrie",
-			"timestamp": "Timestamp (s)",
+			"timestamp": "Temps (s)",
 			"telAltitude": "Altitude (m)",
 			"telPressure": "Pression (hPa)",
 			"telHumidity": "Humidité (%)",
@@ -101,7 +101,12 @@
 		"timeRangeAscent": "Montée (0-75s)",
 		"timeRangeDescent": "Descente (75-142s)",			"charts": "Graphiques",
 			"chartsComingSoon": "Visualisations des données de vol (Chart.js - À venir)",
-			"chartsPreparation": "Graphiques interactifs en préparation..."
+			"chartsPreparation": "Graphiques interactifs en préparation...",
+			"flightTrajectory": "Trajectoire du Vol",
+			"trajectoryDescription": "Trajet GPS complet du vol avec points clés (lancement, apogée, atterrissage)",
+			"launch": "Lancement",
+			"apogee": "Apogée",
+			"landing": "Atterrissage"
 		},
 		"en": {
 			"rocketlab": "UE RocketLab",
@@ -200,7 +205,12 @@
 		"timeRangeAscent": "Ascent (0-75s)",
 		"timeRangeDescent": "Descent (75-142s)",			"charts": "Charts",
 			"chartsComingSoon": "Flight data visualizations (Chart.js - Coming soon)",
-			"chartsPreparation": "Interactive charts under preparation..."
+			"chartsPreparation": "Interactive charts under preparation...",
+			"flightTrajectory": "Flight Trajectory",
+			"trajectoryDescription": "Complete GPS path of the flight with key points (launch, apogee, landing)",
+			"launch": "Launch",
+			"apogee": "Apogee",
+			"landing": "Landing"
 		},
 		"de": {
 			"rocketlab": "UE RocketLab",
@@ -299,7 +309,12 @@
 		"timeRangeAscent": "Aufstieg (0-75s)",
 		"timeRangeDescent": "Abstieg (75-142s)",			"charts": "Diagramme",
 			"chartsComingSoon": "Flugdatenvisualisierungen (Chart.js - Demnächst verfügbar)",
-			"chartsPreparation": "Interaktive Diagramme werden vorbereitet..."
+			"chartsPreparation": "Interaktive Diagramme werden vorbereitet...",
+			"flightTrajectory": "Flugtrajektorie",
+			"trajectoryDescription": "Vollständige GPS-Bahn des Flugs mit Schlüsselpunkten (Start, Apogäum, Landung)",
+			"launch": "Start",
+			"apogee": "Apogäum",
+			"landing": "Landung"
 		},
 		"lb": {
 			"rocketlab": "UE RocketLab",
@@ -403,7 +418,12 @@
 			"timeRangeDescent": "Descent (75-142s)",
 			"charts": "Diagram",
 			"chartsComingSoon": "Flugdaten-Visualisierungen (Chart.js - Geschwënn verfügbar)",
-			"chartsPreparation": "Interaktiv Diagram ginn virbereeden..."
+			"chartsPreparation": "Interaktiv Diagram ginn virbereeden...",
+			"flightTrajectory": "Flugtrajektorie",
+			"trajectoryDescription": "Komplett GPS-Wee vum Flug mat Schlësselpunkten (Start, Apogäum, Landung)",
+			"launch": "Start",
+			"apogee": "Apogäum",
+			"landing": "Landung"
 		},
 		"es": {
 			"rocketlab": "UE RocketLab",
@@ -502,7 +522,12 @@
 		"timeRangeAscent": "Ascenso (0-75s)",
 		"timeRangeDescent": "Descenso (75-142s)",			"charts": "Gráficos",
 			"chartsComingSoon": "Visualizaciones de datos de vuelo (Chart.js - Próximamente)",
-			"chartsPreparation": "Gráficos interactivos en preparación..."
+			"chartsPreparation": "Gráficos interactivos en preparación...",
+			"flightTrajectory": "Trayectoria del Vuelo",
+			"trajectoryDescription": "Ruta GPS completa del vuelo con puntos clave (despegue, apogeo, aterrizaje)",
+			"launch": "Despegue",
+			"apogee": "Apogeo",
+			"landing": "Aterrizaje"
 		}
 	};
 
@@ -523,6 +548,16 @@
 			applyTranslations(lang);
 			updateLanguageSelector(lang);
 			hideLanguageModal();
+			
+			// Redraw charts if the function is available (on analysis page)
+			if (typeof window.redrawCharts === 'function') {
+				window.redrawCharts();
+			}
+			
+			// Redraw map if the function is available (on analysis page)
+			if (typeof window.redrawMap === 'function') {
+				window.redrawMap();
+			}
 		}
 	}
 
@@ -621,6 +656,13 @@
 
 	// Expose setLanguage globally
 	window.setLanguage = setLanguage;
+
+	// Expose getTranslation for other scripts
+	window.getTranslation = function(key) {
+		const lang = getCurrentLanguage();
+		const trans = translations[lang];
+		return trans[key] || key;
+	};
 
 	// Expose resetLanguage for testing/demo
 	window.resetLanguage = function() {

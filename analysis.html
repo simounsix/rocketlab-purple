@@ -12,6 +12,8 @@
         })();
     </script>
     <link rel="stylesheet" href="style.css">
+    <!-- Leaflet CSS for maps -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 
 <body>
@@ -119,81 +121,97 @@
                                 <td>0.0</td>
                                 <td>245</td>
                                 <td>1013.25</td>
-                                <td>65.2</td>
+                                <td>65.0</td>
                                 <td>49.1892°N</td>
                                 <td>2.2424°E</td>
                             </tr>
                             <tr>
-                                <td>5.2</td>
-                                <td>1248</td>
-                                <td>938.50</td>
-                                <td>58.4</td>
-                                <td>49.1901°N</td>
-                                <td>2.2432°E</td>
+                                <td>5.0</td>
+                                <td>1856</td>
+                                <td>935.42</td>
+                                <td>60.5</td>
+                                <td>49.1899°N</td>
+                                <td>2.2429°E</td>
                             </tr>
                             <tr>
-                                <td>10.8</td>
-                                <td>2891</td>
-                                <td>802.15</td>
-                                <td>51.3</td>
-                                <td>49.1915°N</td>
-                                <td>2.2448°E</td>
+                                <td>10.0</td>
+                                <td>4125</td>
+                                <td>763.18</td>
+                                <td>50.2</td>
+                                <td>49.1912°N</td>
+                                <td>2.2440°E</td>
                             </tr>
                             <tr>
-                                <td>20.5</td>
-                                <td>8234</td>
-                                <td>432.80</td>
-                                <td>28.6</td>
-                                <td>49.1953°N</td>
-                                <td>2.2502°E</td>
+                                <td>20.0</td>
+                                <td>9843</td>
+                                <td>357.85</td>
+                                <td>28.4</td>
+                                <td>49.1938°N</td>
+                                <td>2.2468°E</td>
                             </tr>
                             <tr>
-                                <td>32.1</td>
-                                <td>15847</td>
-                                <td>186.40</td>
+                                <td>30.0</td>
+                                <td>15234</td>
+                                <td>107.62</td>
                                 <td>12.1</td>
-                                <td>49.2011°N</td>
-                                <td>2.2598°E</td>
+                                <td>49.1974°N</td>
+                                <td>2.2510°E</td>
                             </tr>
                             <tr>
-                                <td>48.9</td>
-                                <td>24156</td>
-                                <td>31.25</td>
-                                <td>2.8</td>
-                                <td>49.2089°N</td>
-                                <td>2.2745°E</td>
+                                <td>40.0</td>
+                                <td>19456</td>
+                                <td>24.35</td>
+                                <td>3.2</td>
+                                <td>49.2018°N</td>
+                                <td>2.2565°E</td>
+                            </tr>
+                            <tr>
+                                <td>50.0</td>
+                                <td>22187</td>
+                                <td>6.18</td>
+                                <td>0.8</td>
+                                <td>49.2067°N</td>
+                                <td>2.2628°E</td>
+                            </tr>
+                            <tr>
+                                <td>60.0</td>
+                                <td>24102</td>
+                                <td>2.14</td>
+                                <td>0.2</td>
+                                <td>49.2118°N</td>
+                                <td>2.2699°E</td>
                             </tr>
                             <tr>
                                 <td>75.0</td>
-                                <td>30285</td>
-                                <td>1.54</td>
+                                <td>25189</td>
+                                <td>0.87</td>
                                 <td>0.1</td>
-                                <td>49.2201°N</td>
-                                <td>2.3012°E</td>
+                                <td>49.2190°N</td>
+                                <td>2.2798°E</td>
                             </tr>
                             <tr>
-                                <td>95.3</td>
-                                <td>18764</td>
-                                <td>24.80</td>
-                                <td>1.9</td>
-                                <td>49.2112°N</td>
-                                <td>2.2854°E</td>
+                                <td>90.0</td>
+                                <td>18234</td>
+                                <td>18.42</td>
+                                <td>1.5</td>
+                                <td>49.2165°N</td>
+                                <td>2.2765°E</td>
                             </tr>
                             <tr>
-                                <td>120.6</td>
-                                <td>4521</td>
-                                <td>562.35</td>
-                                <td>35.4</td>
-                                <td>49.2001°N</td>
-                                <td>2.2651°E</td>
+                                <td>110.0</td>
+                                <td>6543</td>
+                                <td>398.76</td>
+                                <td>22.8</td>
+                                <td>49.2095°N</td>
+                                <td>2.2665°E</td>
                             </tr>
                             <tr>
                                 <td>142.0</td>
                                 <td>245</td>
-                                <td>1011.80</td>
-                                <td>64.8</td>
-                                <td>49.1892°N</td>
-                                <td>2.2425°E</td>
+                                <td>1010.82</td>
+                                <td>64.5</td>
+                                <td>49.2010°N</td>
+                                <td>2.2545°E</td>
                             </tr>
                         </tbody>
                     </table>
@@ -203,9 +221,38 @@
             <section id="charts-section" class="panel">
                 <h2 data-i18n="charts">Graphiques</h2>
                 <p class="panel-subtitle" data-i18n="chartsComingSoon">Visualisations des données de vol (Chart.js - À venir)</p>
-                <div style="margin-top: 20px; padding: 40px; text-align: center; background: var(--surface-muted); border-radius: var(--radius); color: var(--text-muted);">
-                    <p data-i18n="chartsPreparation">Graphiques interactifs en préparation...</p>
+                
+                <div style="margin-top: 30px;">
+                    <!-- Altitude Chart -->
+                    <div style="position: relative; height: 300px; margin-bottom: 40px;">
+                        <canvas id="altitudeChart"></canvas>
+                        <div id="altitudePlaceholder" class="chart-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--surface-muted); border-radius: var(--radius); color: var(--text-muted);">
+                            <p>Graphique d'altitude en chargement...</p>
+                        </div>
+                    </div>
+
+                    <!-- Pressure Chart -->
+                    <div style="position: relative; height: 300px; margin-bottom: 40px;">
+                        <canvas id="pressureChart"></canvas>
+                        <div id="pressurePlaceholder" class="chart-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--surface-muted); border-radius: var(--radius); color: var(--text-muted);">
+                            <p>Graphique de pression en chargement...</p>
+                        </div>
+                    </div>
+
+                    <!-- Humidity Chart -->
+                    <div style="position: relative; height: 300px; margin-bottom: 40px;">
+                        <canvas id="humidityChart"></canvas>
+                        <div id="humidityPlaceholder" class="chart-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--surface-muted); border-radius: var(--radius); color: var(--text-muted);">
+                            <p>Graphique d'humidité en chargement...</p>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <section id="map-section" class="panel">
+                <h2 data-i18n="flightTrajectory">Trajectoire du Vol</h2>
+                <p class="panel-subtitle" data-i18n="trajectoryDescription">Trajet GPS complet du vol avec points clés (lancement, apogée, atterrissage)</p>
+                <div id="map" style="height: 500px; border-radius: 8px; overflow: hidden; margin-top: 20px;"></div>
             </section>
 
             <section id="etat" class="panel">
@@ -222,6 +269,10 @@
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="charts.js"></script>
+    <script src="map.js"></script>
     <script src="i18n.js"></script>
 </body>
 </html>
